@@ -1,0 +1,21 @@
+# ELAN training configuration for 2x card upscaling
+model: elan
+scale: 2
+gt_size: 256
+batch_size: 16
+epochs: 1000
+lr: 0.0002
+decays: [200, 400, 600, 800]
+gamma: 0.5
+log_every: 100
+test_every: 10
+num_workers: 4
+threads: 8
+gpu_ids: [0]
+dataroot: "./datasets/cards_train"
+valid_dataroots:
+  set5: "./datasets/cards_val/set5"
+  set14: "./datasets/cards_val/set14"
+use_hflip: true
+use_rot: true
+log_path: "experiments"

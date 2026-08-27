@@ -1,0 +1,54 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "card-enhancer-suite"
+version = "1.0.0"
+description = "Bulk enhancement and restoration pipeline for trading-card images"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+keywords = ["super-resolution", "upscaling", "trading-cards", "gigapixel", "elan"]
+dependencies = [
+    "loguru>=0.7.0",
+    "tqdm>=4.65.0",
+    "the-retry>=0.1.1",
+    "PyYAML>=6.0",
+]
+
+[project.optional-dependencies]
+# PyTorch backend for ELAN super-resolution (training + inference)
+torch = [
+    "torch>=2.0.0",
+    "torchvision>=0.15.0",
+    "Pillow>=9.0.0",
+]
+# Windows-only GUI automation for Topaz Gigapixel AI
+gigapixel = [
+    "pywinauto>=0.6.8; sys_platform == 'win32'",
+    "pywin32>=306; sys_platform == 'win32'",
+    "clipboard>=0.0.4; sys_platform == 'win32'",
+]
+dev = [
+    "pytest>=7.4.0",
+    "black>=23.0.0",
+    "ruff>=0.1.0",
+    "mypy>=1.0.0",
+    "flake8>=6.0.0",
+    "tox>=4.0.0",
+]
+
+[project.scripts]
+gigapixel-batch = "gigapixel.batch:main"
+elan-train = "elan.train:main"
+card-enhance = "card_enhancer.cli:main"
+
+[tool.setuptools]
+packages = ["gigapixel", "card_enhancer", "elan"]
+
+[tool.black]
+line-length = 100
+
+[tool.ruff]
+line-length = 100

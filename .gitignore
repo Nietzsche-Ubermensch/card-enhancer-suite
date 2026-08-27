@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+
+# Tooling
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+.tox/
+
+# Data & experiments (kept out of the repo on purpose)
+datasets/
+experiments/
+*.jsonl
+*.pt
+*.pth
+
+# OS
+.DS_Store
+Thumbs.db
